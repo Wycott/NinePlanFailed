@@ -1,6 +1,4 @@
-using NinePlanFailedLibrary;
-
-namespace NinePlanFailed.Test;
+namespace NinePlanFailedLibrary.Test;
 
 public class KaprekarTest
 {

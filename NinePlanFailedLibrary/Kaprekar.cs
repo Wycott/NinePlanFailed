@@ -53,6 +53,18 @@ public static class Kaprekar
         return (highToLowNumber, lowToHighNumber);
     }
 
+    public static bool AllCharactersSame(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return false;
+        }
+
+        var firstChar = input[0];
+
+        return input.All(c => c == firstChar);
+    }
+
     private static void ValidateTerm(int term)
     {
         if (TermIsInvalid(term))
@@ -74,15 +86,5 @@ public static class Kaprekar
         return (term is < BottomEnd or > TopEnd);
     }
 
-    public static bool AllCharactersSame(string input)
-    {
-        if (string.IsNullOrEmpty(input))
-        {
-            return false;
-        }
-
-        var firstChar = input[0];
-
-        return input.All(c => c == firstChar);
-    }
+    
 }
