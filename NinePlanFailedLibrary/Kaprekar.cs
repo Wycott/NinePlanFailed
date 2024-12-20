@@ -1,89 +1,88 @@
-﻿namespace NinePlanFailedLibrary
+﻿namespace NinePlanFailedLibrary;
+
+public static class Kaprekar
 {
-    public static class Kaprekar
+    public static int TestTerm(int term)
     {
-        public static int TestTerm(int term)
+        const int Target = 6174;
+
+        ValidateTerm(term);
+
+        var res = term;
+
+        while (res != Target)
         {
-            const int Target = 6174;
+            var parts = SortDigits(res);
 
-            ValidateTerm(term);
+            var lhs = parts.Item1;
+            var rhs = parts.Item2;
 
-            var res = term;
-
-            while (res != Target)
+            if (lhs < 1000)
             {
-                var parts = SortDigits(res);
-
-                var lhs = parts.Item1;
-                var rhs = parts.Item2;
-
-                if (lhs < 1000)
-                {
-                    lhs *= 10;
-                }
-
-                res = lhs - rhs;
-
+                lhs *= 10;
             }
 
-            return SumDigits(SumDigits(res));
+            res = lhs - rhs;
+
         }
 
-        public static int SumDigits(int number)
+        return SumDigits(SumDigits(res));
+    }
+
+    public static int SumDigits(int number)
+    {
+        var sum = 0;
+
+        while (number != 0)
         {
-            var sum = 0;
-
-            while (number != 0)
-            {
-                sum += number % 10;
-                number /= 10;
-            }
-
-            return sum;
+            sum += number % 10;
+            number /= 10;
         }
 
-        public static (int, int) SortDigits(int number)
+        return sum;
+    }
+
+    public static (int, int) SortDigits(int number)
+    {
+        var numString = number.ToString();
+        var highToLow = new string(numString.OrderByDescending(c => c).ToArray());
+        var lowToHigh = new string(numString.OrderBy(c => c).ToArray());
+        var highToLowNumber = int.Parse(highToLow);
+        var lowToHighNumber = int.Parse(lowToHigh);
+
+        return (highToLowNumber, lowToHighNumber);
+    }
+
+    private static void ValidateTerm(int term)
+    {
+        if (TermIsInvalid(term))
         {
-            var numString = number.ToString();
-            var highToLow = new string(numString.OrderByDescending(c => c).ToArray());
-            var lowToHigh = new string(numString.OrderBy(c => c).ToArray());
-            var highToLowNumber = int.Parse(highToLow);
-            var lowToHighNumber = int.Parse(lowToHigh);
-
-            return (highToLowNumber, lowToHighNumber);
+            throw new InvalidOperationException("Invalid term");
         }
 
-        private static void ValidateTerm(int term)
+        if (AllCharactersSame(term.ToString()))
         {
-            if (TermIsInvalid(term))
-            {
-                throw new InvalidOperationException("Invalid term");
-            }
-
-            if (AllCharactersSame(term.ToString()))
-            {
-                throw new ArgumentException("Nine plan failed");
-            }
+            throw new ArgumentException("Nine plan failed");
         }
+    }
 
-        private static bool TermIsInvalid(int term)
+    private static bool TermIsInvalid(int term)
+    {
+        const int BottomEnd = 1000;
+        const int TopEnd = 9999;
+
+        return (term is < BottomEnd or > TopEnd);
+    }
+
+    public static bool AllCharactersSame(string input)
+    {
+        if (string.IsNullOrEmpty(input))
         {
-            const int BottomEnd = 1000;
-            const int TopEnd = 9999;
-
-            return (term is < BottomEnd or > TopEnd);
+            return false;
         }
 
-        public static bool AllCharactersSame(string input)
-        {
-            if (string.IsNullOrEmpty(input))
-            {
-                return false;
-            }
+        var firstChar = input[0];
 
-            var firstChar = input[0];
-
-            return input.All(c => c == firstChar);
-        }
+        return input.All(c => c == firstChar);
     }
 }

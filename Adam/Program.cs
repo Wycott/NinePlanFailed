@@ -1,16 +1,15 @@
 ﻿using NinePlanFailedLibrary;
 
-namespace Adam
+namespace Adam;
+
+internal class Program
 {
-    internal class Program
+    private static void Main()
     {
-        private static void Main()
-        {
-            const int Seed = 1459;
+        const int Seed = 1459;
 
-            var res = Kaprekar.TestTerm(Seed);
+        var res = Kaprekar.TestTerm(Seed);
 
-            Console.WriteLine(res); // 9
-        }
+        Console.WriteLine(res); // 9
     }
 }
