@@ -41,6 +41,7 @@ internal class Program
         }
     }
 
+    // ReSharper disable once UnusedMember.Local
     private static void RunOnce()
     {
         const int Seed = 1459;

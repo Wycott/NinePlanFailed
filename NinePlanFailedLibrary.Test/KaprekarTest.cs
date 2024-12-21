@@ -2,18 +2,13 @@ namespace NinePlanFailedLibrary.Test;
 
 public class KaprekarTest
 {
-    [Fact]
-    public void LowTermThrowsException()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(999)]
+    [InlineData(10000)]
+    public void OutOfRangeTermThrowsException(int term)
     {
-        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(999, out _));
-
-        Assert.Equal("Invalid term", message.Message);
-    }
-
-    [Fact]
-    public void HighTermThrowsException()
-    {
-        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(10000, out _));
+        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(term, out _));
 
         Assert.Equal("Invalid term", message.Message);
     }
