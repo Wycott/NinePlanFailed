@@ -5,7 +5,7 @@ public class KaprekarTest
     [Fact]
     public void LowTermThrowsException()
     {
-        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(999));
+        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(999, out _));
 
         Assert.Equal("Invalid term", message.Message);
     }
@@ -13,7 +13,7 @@ public class KaprekarTest
     [Fact]
     public void HighTermThrowsException()
     {
-        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(10000));
+        var message = Assert.Throws<InvalidOperationException>(() => Kaprekar.TestTerm(10000, out _));
 
         Assert.Equal("Invalid term", message.Message);
     }
@@ -30,7 +30,7 @@ public class KaprekarTest
     [InlineData(9999)]
     public void InvalidTermsThrowException(int term)
     {
-        var message = Assert.Throws<ArgumentException>(() => Kaprekar.TestTerm(term));
+        var message = Assert.Throws<ArgumentException>(() => Kaprekar.TestTerm(term, out _));
 
         Assert.Equal("Nine plan failed", message.Message);
     }
@@ -41,7 +41,7 @@ public class KaprekarTest
     {
         const int ExpectedValue = 9;
 
-        var ret = Kaprekar.TestTerm(term);
+        var ret = Kaprekar.TestTerm(term, out _);
 
         Assert.Equal(ExpectedValue, ret);
     }

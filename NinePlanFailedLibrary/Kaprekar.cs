@@ -2,13 +2,15 @@
 
 public static class Kaprekar
 {
-    public static int TestTerm(int term)
+    public static int TestTerm(int term, out int iteration)
     {
         const int Target = 6174;
 
         ValidateTerm(term);
 
         var res = term;
+
+        iteration = 0;
 
         while (res != Target)
         {
@@ -23,7 +25,7 @@ public static class Kaprekar
             }
 
             res = lhs - rhs;
-
+            iteration++;
         }
 
         return SumDigits(SumDigits(res));
@@ -85,6 +87,4 @@ public static class Kaprekar
 
         return (term is < BottomEnd or > TopEnd);
     }
-
-    
 }

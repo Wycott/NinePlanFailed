@@ -9,4 +9,4 @@ A library and some tests to prove [Kaprekar's constant](https://en.wikipedia.org
 ---
 
 *Created: 20 December 2024*  
-*Updated: 20 December 2024*
+*Updated: 21 December 2024*
