@@ -47,8 +47,7 @@ public class KaprekarTest
         {
             if (!Kaprekar.AllCharactersSame(i.ToString()))
             {
-                yield return new object[]
-                    { i };
+                yield return [i];
             }
         }
     }
