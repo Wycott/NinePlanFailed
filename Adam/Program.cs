@@ -28,6 +28,7 @@ internal class Program
             if (!iterationsFound.Contains(iterations))
             {
                 WriteLine($"Found iteration of size: {iterations} - {i}");
+
                 iterationsFound.Add(iterations);
             }
 
@@ -37,6 +38,7 @@ internal class Program
             }
 
             maxIteration = iterations;
+            
             WriteLine($"Best so far: {i}, required {maxIteration} iterations");
         }
     }

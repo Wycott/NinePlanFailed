@@ -62,6 +62,7 @@ public static class Kaprekar
     public static int TestTerm(int term, out int iteration)
     {
         var result = Run(term);
+
         iteration = result.Iterations;
 
         return result.DigitRoot;
