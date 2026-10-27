@@ -23,7 +23,7 @@ internal class Program
                 continue;
             }
 
-            _ = Kaprekar.TestTerm(i, out var iterations);
+            var iterations = Kaprekar.Run(i).Iterations;
 
             if (!iterationsFound.Contains(iterations))
             {
@@ -41,12 +41,13 @@ internal class Program
         }
     }
 
+    // Example of running the routine for a single seed. Kept as a usage sample.
     // ReSharper disable once UnusedMember.Local
     private static void RunOnce()
     {
         const int Seed = 1459;
 
-        var res = Kaprekar.TestTerm(Seed, out _);
+        var res = Kaprekar.Run(Seed).DigitRoot;
 
         WriteLine(res); // 9
     }
