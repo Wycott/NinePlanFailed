@@ -29,10 +29,10 @@ NinePlanFailed implements Kaprekar's routine for 4-digit numbers: repeatedly arr
 
 | Metric | Value |
 |--------|-------|
-| Total commits | 22 |
+| Total commits | 27 |
 | First commit | Friday, 20 December 2024 |
-| Last commit | Friday, 6 November 2026 |
-| Days | 686 |
-| Weeks | 98 |
-| Months | 22 |
+| Last commit | Saturday, 21 November 2026 |
+| Days | 701 |
+| Weeks | 100 |
+| Months | 23 |
 | Years | 1 |
